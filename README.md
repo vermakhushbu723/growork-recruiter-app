@@ -5,7 +5,9 @@ and manage the whole hiring flow. Built on the same design system as
 `growork-user-app` — `lib/core` (colours, theme, sizes, `ui_kit.dart`) is a copy
 of the user app's, so screens look identical across both apps.
 
-Runs on mock data (Riverpod providers) until the backend is wired in.
+All data comes from the shared backend in `../growork-backend` (see its
+README for setup and demo logins). Demo recruiter: `ananya@demo.subkamyaab.com`
+/ `Demo@123`.
 
 ## Screens
 
@@ -21,7 +23,7 @@ Runs on mock data (Riverpod providers) until the backend is wired in.
 | Money | Wallet & payments, Add money, Withdraw, Plans & credits |
 | Other | Hiring analytics, Reviews, Notifications, Settings, Language, Privacy, Help |
 
-## Flows that work end to end (mock)
+## Flows that work end to end (live API)
 
 - Publish a job → uses a job credit → appears in Jobs; edit, pause, close, duplicate, delete.
 - Applicant → Shortlist → Schedule interview → Send offer → Mark hired (or reject).
@@ -32,8 +34,10 @@ Runs on mock data (Riverpod providers) until the backend is wired in.
 
 ```
 flutter pub get
-flutter run
-flutter test   # includes a test that renders every screen in light & dark
+flutter run                     # emulator talks to http://10.0.2.2:5080
+flutter run --dart-define=API_BASE_URL=http://<PC-IP>:5080/api/v1   # real phone
+flutter test                    # needs the backend running (npm run dev)
 ```
 
-Log in with any email/password (mock auth).
+`flutter test` runs against the live backend: it parses every API response
+into the app models and opens every screen with real data (light & dark).

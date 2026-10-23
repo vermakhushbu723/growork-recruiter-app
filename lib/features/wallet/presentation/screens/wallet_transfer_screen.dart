@@ -27,10 +27,10 @@ class _WalletTransferScreenState extends ConsumerState<WalletTransferScreen> {
       ? const [
           (
             Icons.account_balance_rounded,
-            'ICICI Bank ••7731',
+            'Linked bank account',
             'Company current account',
           ),
-          (Icons.qr_code_rounded, 'UPI · techify@icici', 'Instant transfer'),
+          (Icons.qr_code_rounded, 'UPI', 'Instant transfer'),
         ]
       : const [
           (Icons.qr_code_rounded, 'UPI', 'GPay, PhonePe, Paytm'),
