@@ -34,8 +34,9 @@ README for setup and demo logins). Demo recruiter: `ananya@demo.subkamyaab.com`
 
 ```
 flutter pub get
-flutter run                     # emulator talks to http://10.0.2.2:5080
-flutter run --dart-define=API_BASE_URL=http://<PC-IP>:5080/api/v1   # real phone
+flutter run                     # uses the live API, https://api.subkamyaab.achivora.com
+flutter run --dart-define=API_BASE_URL=http://10.0.2.2:5080/api/v1   # local backend (emulator)
+flutter build apk --release     # release APK, live API
 flutter test                    # needs the backend running (npm run dev)
 ```
 

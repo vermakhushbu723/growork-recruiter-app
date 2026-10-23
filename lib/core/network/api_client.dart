@@ -1,22 +1,17 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Which side of the platform this app signs in to.
 const String kApp = 'recruiter';
 
-/// Backend base URL. Override per device with
-/// `flutter run --dart-define=API_BASE_URL=http://192.168.1.5:5080/api/v1`.
-/// Defaults: Android emulator → host machine (10.0.2.2), everything else →
-/// localhost.
+/// Backend base URL — the live API. Point a build at a local backend with
+/// `flutter run --dart-define=API_BASE_URL=http://10.0.2.2:5080/api/v1`
+/// (emulator) or `http://<PC-IP>:5080/api/v1` (real phone).
 String get apiBaseUrl {
   const fromEnv = String.fromEnvironment('API_BASE_URL');
   if (fromEnv.isNotEmpty) return fromEnv;
-  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
-    return 'http://10.0.2.2:5080/api/v1';
-  }
-  return 'http://localhost:5080/api/v1';
+  return 'https://api.subkamyaab.achivora.com/api/v1';
 }
 
 /// Readable error from the API (`message` from the server, or a network
